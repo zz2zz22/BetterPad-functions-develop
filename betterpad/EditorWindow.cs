@@ -1260,5 +1260,17 @@ namespace betterpad
                 text.SelectionColor = colorD.Color;
             }
         }
+
+        private void backgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog bColor = new ColorDialog();
+
+            bColor.Color = text.SelectionBackColor;
+
+            if ( bColor.ShowDialog() == System.Windows.Forms.DialogResult.OK && bColor.Color != text.SelectionBackColor)
+            {
+                text.SelectionBackColor = bColor.Color;
+            }
+        }
     }
 }

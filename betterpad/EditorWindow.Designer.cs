@@ -62,10 +62,10 @@
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.othersToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.openImageToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.text = new betterpad.BetterRichTextBox();
             this.menuItem7 = new System.Windows.Forms.MenuItem();
             this.textColorToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.backgroundColorToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.text = new betterpad.BetterRichTextBox();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,7 +76,7 @@
             this.lblStatus1,
             this.lblStatus2,
             this.locationLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 441);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 415);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 11, 0);
             this.statusStrip1.Size = new System.Drawing.Size(732, 26);
@@ -378,22 +378,6 @@
             this.openImageToolStripMenuItem.Text = "Open Image";
             this.openImageToolStripMenuItem.Click += new System.EventHandler(this.openImageToolStripMenuItem_Click);
             // 
-            // text
-            // 
-            this.text.AcceptsTab = true;
-            this.text.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.text.Font = new System.Drawing.Font("Consolas", 11F);
-            this.text.HideSelection = false;
-            this.text.Location = new System.Drawing.Point(0, 0);
-            this.text.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.text.Name = "text";
-            this.text.Size = new System.Drawing.Size(732, 441);
-            this.text.TabIndex = 0;
-            this.text.Text = "";
-            this.text.TextMode = betterpad.BetterRichTextBox.TEXTMODE.TM_PLAINTEXT;
-            this.text.SelectionChanged += new System.EventHandler(this.text_SelectionChanged);
-            this.text.TextChanged += new System.EventHandler(this.text_TextChanged);
-            // 
             // menuItem7
             // 
             this.menuItem7.Index = 2;
@@ -409,13 +393,30 @@
             // 
             this.backgroundColorToolStripMenuItem.Index = 4;
             this.backgroundColorToolStripMenuItem.Text = "Background Color";
+            this.backgroundColorToolStripMenuItem.Click += new System.EventHandler(this.backgroundColorToolStripMenuItem_Click);
+            // 
+            // text
+            // 
+            this.text.AcceptsTab = true;
+            this.text.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.text.Font = new System.Drawing.Font("Consolas", 11F);
+            this.text.HideSelection = false;
+            this.text.Location = new System.Drawing.Point(0, 0);
+            this.text.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.text.Name = "text";
+            this.text.Size = new System.Drawing.Size(732, 415);
+            this.text.TabIndex = 0;
+            this.text.Text = "";
+            this.text.TextMode = betterpad.BetterRichTextBox.TEXTMODE.TM_PLAINTEXT;
+            this.text.SelectionChanged += new System.EventHandler(this.text_SelectionChanged);
+            this.text.TextChanged += new System.EventHandler(this.text_TextChanged);
             // 
             // EditorWindow
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 467);
+            this.ClientSize = new System.Drawing.Size(732, 441);
             this.Controls.Add(this.text);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.testbox);
