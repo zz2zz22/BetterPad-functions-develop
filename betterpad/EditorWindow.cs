@@ -1248,5 +1248,17 @@ namespace betterpad
             Clipboard.SetImage(Image.FromFile(name));
             text.Paste();
         }
+
+        private void textColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorD = new ColorDialog();
+
+            colorD.Color = text.SelectionColor;
+
+            if ( colorD.ShowDialog() == System.Windows.Forms.DialogResult.OK && colorD.Color != text.SelectionColor)
+            {
+                text.SelectionColor = colorD.Color;
+            }
+        }
     }
 }

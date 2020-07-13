@@ -60,9 +60,12 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.testbox = new System.Windows.Forms.Label();
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
-            this.text = new betterpad.BetterRichTextBox();
             this.othersToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.openImageToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.text = new betterpad.BetterRichTextBox();
+            this.menuItem7 = new System.Windows.Forms.MenuItem();
+            this.textColorToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.backgroundColorToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +92,7 @@
             // lblStatus2
             // 
             this.lblStatus2.Name = "lblStatus2";
-            this.lblStatus2.Size = new System.Drawing.Size(74, 20);
+            this.lblStatus2.Size = new System.Drawing.Size(645, 20);
             this.lblStatus2.Spring = true;
             this.lblStatus2.Text = "lblStatus2";
             // 
@@ -280,7 +283,10 @@
             this.formatToolStripMenuItem.Index = 2;
             this.formatToolStripMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.wordWrapToolStripMenuItem,
-            this.fontToolStripMenuItem});
+            this.fontToolStripMenuItem,
+            this.menuItem7,
+            this.textColorToolStripMenuItem,
+            this.backgroundColorToolStripMenuItem});
             this.formatToolStripMenuItem.Text = "F&ormat";
             // 
             // wordWrapToolStripMenuItem
@@ -359,6 +365,19 @@
             this.helpToolStripMenuItem,
             this.othersToolStripMenuItem});
             // 
+            // othersToolStripMenuItem
+            // 
+            this.othersToolStripMenuItem.Index = 5;
+            this.othersToolStripMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.openImageToolStripMenuItem});
+            this.othersToolStripMenuItem.Text = "Others";
+            // 
+            // openImageToolStripMenuItem
+            // 
+            this.openImageToolStripMenuItem.Index = 0;
+            this.openImageToolStripMenuItem.Text = "Open Image";
+            this.openImageToolStripMenuItem.Click += new System.EventHandler(this.openImageToolStripMenuItem_Click);
+            // 
             // text
             // 
             this.text.AcceptsTab = true;
@@ -375,18 +394,21 @@
             this.text.SelectionChanged += new System.EventHandler(this.text_SelectionChanged);
             this.text.TextChanged += new System.EventHandler(this.text_TextChanged);
             // 
-            // othersToolStripMenuItem
+            // menuItem7
             // 
-            this.othersToolStripMenuItem.Index = 5;
-            this.othersToolStripMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.openImageToolStripMenuItem});
-            this.othersToolStripMenuItem.Text = "Others";
+            this.menuItem7.Index = 2;
+            this.menuItem7.Text = "-";
             // 
-            // openImageToolStripMenuItem
+            // textColorToolStripMenuItem
             // 
-            this.openImageToolStripMenuItem.Index = 0;
-            this.openImageToolStripMenuItem.Text = "Open Image";
-            this.openImageToolStripMenuItem.Click += new System.EventHandler(this.openImageToolStripMenuItem_Click);
+            this.textColorToolStripMenuItem.Index = 3;
+            this.textColorToolStripMenuItem.Text = "Text Color";
+            this.textColorToolStripMenuItem.Click += new System.EventHandler(this.textColorToolStripMenuItem_Click);
+            // 
+            // backgroundColorToolStripMenuItem
+            // 
+            this.backgroundColorToolStripMenuItem.Index = 4;
+            this.backgroundColorToolStripMenuItem.Text = "Background Color";
             // 
             // EditorWindow
             // 
@@ -462,6 +484,9 @@
         private System.Windows.Forms.MenuItem checkForUpdateMenuItem;
         private System.Windows.Forms.MenuItem othersToolStripMenuItem;
         private System.Windows.Forms.MenuItem openImageToolStripMenuItem;
+        private System.Windows.Forms.MenuItem menuItem7;
+        private System.Windows.Forms.MenuItem textColorToolStripMenuItem;
+        private System.Windows.Forms.MenuItem backgroundColorToolStripMenuItem;
     }
 }
 
