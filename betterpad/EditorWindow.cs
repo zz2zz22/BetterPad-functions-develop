@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -86,7 +87,8 @@ namespace betterpad
 
         private void InitializeHandlers()
         {
-            Load += (s, e) => {
+            Load += (s, e) =>
+            {
                 text.Padding = new Padding(10, 10, 12, 10);
             };
 
@@ -576,6 +578,7 @@ namespace betterpad
 
         private void Paste()
         {
+            text.Paste(DataFormats.GetFormat(DataFormats.Bitmap));
             text.Paste(DataFormats.GetFormat(DataFormats.UnicodeText));
         }
 
@@ -821,6 +824,29 @@ namespace betterpad
         {
             statusBarToolStripMenuItem.Checked = !statusBarToolStripMenuItem.Checked;
             statusStrip1.Visible = statusBarToolStripMenuItem.Checked;
+        }
+        private void textColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorD = new ColorDialog();
+
+            colorD.Color = text.SelectionColor;
+
+            if (colorD.ShowDialog() == System.Windows.Forms.DialogResult.OK && colorD.Color != text.SelectionColor)
+            {
+                text.SelectionColor = colorD.Color;
+            }
+        }
+
+        private void backgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog bColor = new ColorDialog();
+
+            bColor.Color = text.SelectionBackColor;
+
+            if (bColor.ShowDialog() == System.Windows.Forms.DialogResult.OK && bColor.Color != text.SelectionBackColor)
+            {
+                text.SelectionBackColor = bColor.Color;
+            }
         }
 
         // Used to store the font as returned by the font selector, as we don't apply it directly
@@ -1233,6 +1259,7 @@ namespace betterpad
             preferences.Save();
         }
 
+        //Others Menu Handlers
         private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openimg = new OpenFileDialog();
@@ -1247,30 +1274,6 @@ namespace betterpad
         {
             Clipboard.SetImage(Image.FromFile(name));
             text.Paste();
-        }
-
-        private void textColorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ColorDialog colorD = new ColorDialog();
-
-            colorD.Color = text.SelectionColor;
-
-            if ( colorD.ShowDialog() == System.Windows.Forms.DialogResult.OK && colorD.Color != text.SelectionColor)
-            {
-                text.SelectionColor = colorD.Color;
-            }
-        }
-
-        private void backgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ColorDialog bColor = new ColorDialog();
-
-            bColor.Color = text.SelectionBackColor;
-
-            if ( bColor.ShowDialog() == System.Windows.Forms.DialogResult.OK && bColor.Color != text.SelectionBackColor)
-            {
-                text.SelectionBackColor = bColor.Color;
-            }
         }
     }
 }
