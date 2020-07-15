@@ -66,6 +66,8 @@
             this.othersToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.openImageToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.text = new betterpad.BetterRichTextBox();
+            this.saveAsRtfToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.loadRtfToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -386,7 +388,9 @@
             // 
             this.othersToolStripMenuItem.Index = 5;
             this.othersToolStripMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.openImageToolStripMenuItem});
+            this.openImageToolStripMenuItem,
+            this.saveAsRtfToolStripMenuItem,
+            this.loadRtfToolStripMenuItem});
             this.othersToolStripMenuItem.Text = "Others";
             // 
             // openImageToolStripMenuItem
@@ -410,6 +414,18 @@
             this.text.TextMode = betterpad.BetterRichTextBox.TEXTMODE.TM_PLAINTEXT;
             this.text.SelectionChanged += new System.EventHandler(this.text_SelectionChanged);
             this.text.TextChanged += new System.EventHandler(this.text_TextChanged);
+            // 
+            // saveAsRtfToolStripMenuItem
+            // 
+            this.saveAsRtfToolStripMenuItem.Index = 1;
+            this.saveAsRtfToolStripMenuItem.Text = "Save as RTF";
+            this.saveAsRtfToolStripMenuItem.Click += new System.EventHandler(this.saveAsRtfToolStripMenuItem_Click);
+            // 
+            // loadRtfToolStripMenuItem
+            // 
+            this.loadRtfToolStripMenuItem.Index = 2;
+            this.loadRtfToolStripMenuItem.Text = "Load RTF";
+            this.loadRtfToolStripMenuItem.Click += new System.EventHandler(this.loadRtfToolStripMenuItem_Click);
             // 
             // EditorWindow
             // 
@@ -488,6 +504,8 @@
         private System.Windows.Forms.MenuItem menuItem7;
         private System.Windows.Forms.MenuItem textColorToolStripMenuItem;
         private System.Windows.Forms.MenuItem backgroundColorToolStripMenuItem;
+        private System.Windows.Forms.MenuItem saveAsRtfToolStripMenuItem;
+        private System.Windows.Forms.MenuItem loadRtfToolStripMenuItem;
     }
 }
 

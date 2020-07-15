@@ -328,7 +328,7 @@ namespace betterpad
                 CheckFileExists = true,
                 CheckPathExists = true,
                 DefaultExt = "txt",
-                Filter = "Plain Text Files|" + FileExtensions.AsFilter + "|Text Files (*.txt)|*.txt|Log Files (*.log)|*.log|Binary Files (*.bin)|*.bin",
+                Filter = "Plain Text Files|" + FileExtensions.AsFilter + "|Text Files (*.txt)|*.txt|Log Files (*.log)|*.log",
                 Multiselect = true,
                 RestoreDirectory = true,
                 InitialDirectory = string.IsNullOrEmpty(FilePath) ? Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) : Path.GetDirectoryName(FilePath),
@@ -471,7 +471,7 @@ namespace betterpad
                         RestoreDirectory = true,
                         InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                         Title = "Save file",
-                        Filter = "Text Files (*.txt)|*.txt|Log Files (*.log)|*.log|Binary Files (*.bin)|*.bin"
+                        Filter = "Text Files (*.txt)|*.txt|Log Files (*.log)|*.log"
                     })
                     {
                         if (dialog.ShowDialog(this) != DialogResult.OK)
@@ -807,6 +807,32 @@ namespace betterpad
             var snippet = (DateTime.Now).ToString("h:mm tt M/d/yyyy");
             text.Insert(snippet);
         }
+        public void SaveAsRTF()
+        {
+            SaveFileDialog saveFile1 = new SaveFileDialog();
+
+            saveFile1.DefaultExt = "*.rtf";
+            saveFile1.Filter = "RTF Files|*.rtf";
+
+            if (saveFile1.ShowDialog() == System.Windows.Forms.DialogResult.OK &&
+               saveFile1.FileName.Length > 0)
+            {
+                text.SaveFile(saveFile1.FileName, RichTextBoxStreamType.RichText);
+            }
+        }
+        public void LoadRTF()
+        {
+            OpenFileDialog openFile1 = new OpenFileDialog();
+
+            openFile1.DefaultExt = "*.rtf";
+            openFile1.Filter = "RTF Files|*.rtf";
+
+            if (openFile1.ShowDialog() == System.Windows.Forms.DialogResult.OK &&
+               openFile1.FileName.Length > 0)
+            {
+                text.LoadFile(openFile1.FileName);
+            }
+        }
 
         //Format menu handlers
         private void WordWrap(bool wrap)
@@ -988,6 +1014,37 @@ namespace betterpad
                 return $"{version.Major}.{version.Minor}.{version.Build}";
             }
         }
+
+        //Others Menu Handlers
+        private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openimg = new OpenFileDialog();
+
+            openimg.Filter = "Image files(*.jpeg; *.jpg; *.gif; *.png; *.peg) | *.jpeg;  *.jpg; *.gif; *.png; *.peg";
+            if (openimg.ShowDialog() == DialogResult.OK)
+            {
+                createImage(openimg.FileName);
+            }
+        }
+        private void createImage(string name)
+        {
+            Clipboard.SetImage(Image.FromFile(name));
+            text.Paste();
+        }
+
+
+        private void saveAsRtfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveAsRTF();
+        }
+
+        private void loadRtfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadRTF();
+        }
+
+
+
 
         private static string _buildHash;
         public static async Task<string> CalculateBuildHashAsync()
@@ -1258,23 +1315,6 @@ namespace betterpad
                 WordWrap = text.WordWrap
             };
             preferences.Save();
-        }
-
-        //Others Menu Handlers
-        private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openimg = new OpenFileDialog();
-
-            openimg.Filter = "Image files(*.jpeg; *.jpg; *.gif; *.png; *.peg) | *.jpeg;  *.jpg; *.gif; *.png; *.peg";
-            if (openimg.ShowDialog() == DialogResult.OK)
-            {
-                createImage(openimg.FileName);
-            }
-        }
-        private void createImage(string name)
-        {
-            Clipboard.SetImage(Image.FromFile(name));
-            text.Paste();
         }
     }
 }
