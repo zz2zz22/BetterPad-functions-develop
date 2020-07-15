@@ -34,6 +34,7 @@ namespace betterpad
             "1st",
             "600",
             "ME",
+            "bin",
         };
 
         public static string AsFilter

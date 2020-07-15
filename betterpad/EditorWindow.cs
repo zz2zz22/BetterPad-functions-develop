@@ -328,7 +328,7 @@ namespace betterpad
                 CheckFileExists = true,
                 CheckPathExists = true,
                 DefaultExt = "txt",
-                Filter = "Plain Text Files|" + FileExtensions.AsFilter + "|Text Files (*.txt)|*.txt|Log Files (*.log)|*.log",
+                Filter = "Plain Text Files|" + FileExtensions.AsFilter + "|Text Files (*.txt)|*.txt|Log Files (*.log)|*.log|Binary Files (*.bin)|*.bin",
                 Multiselect = true,
                 RestoreDirectory = true,
                 InitialDirectory = string.IsNullOrEmpty(FilePath) ? Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) : Path.GetDirectoryName(FilePath),
@@ -449,6 +449,7 @@ namespace betterpad
             GC.Collect();
         }
 
+
         private Task<bool> SaveAsAsync()
         {
             return SaveAsAsync(null);
@@ -470,7 +471,7 @@ namespace betterpad
                         RestoreDirectory = true,
                         InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                         Title = "Save file",
-                        Filter = "Text Files (*.txt)|*.txt|Log Files (*.log)|*.log"
+                        Filter = "Text Files (*.txt)|*.txt|Log Files (*.log)|*.log|Binary Files (*.bin)|*.bin"
                     })
                     {
                         if (dialog.ShowDialog(this) != DialogResult.OK)
