@@ -50,6 +50,9 @@
             this.formatToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.wordWrapToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.fontToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.menuItem7 = new System.Windows.Forms.MenuItem();
+            this.textColorToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.backgroundColorToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.statusBarToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.MenuItem();
@@ -62,9 +65,6 @@
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.othersToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.openImageToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.menuItem7 = new System.Windows.Forms.MenuItem();
-            this.textColorToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.backgroundColorToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.text = new betterpad.BetterRichTextBox();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -299,6 +299,23 @@
             this.fontToolStripMenuItem.Index = 1;
             this.fontToolStripMenuItem.Text = "&Font";
             // 
+            // menuItem7
+            // 
+            this.menuItem7.Index = 2;
+            this.menuItem7.Text = "-";
+            // 
+            // textColorToolStripMenuItem
+            // 
+            this.textColorToolStripMenuItem.Index = 3;
+            this.textColorToolStripMenuItem.Text = "Text Color";
+            this.textColorToolStripMenuItem.Click += new System.EventHandler(this.textColorToolStripMenuItem_Click);
+            // 
+            // backgroundColorToolStripMenuItem
+            // 
+            this.backgroundColorToolStripMenuItem.Index = 4;
+            this.backgroundColorToolStripMenuItem.Text = "Background Color";
+            this.backgroundColorToolStripMenuItem.Click += new System.EventHandler(this.backgroundColorToolStripMenuItem_Click);
+            // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Index = 3;
@@ -377,23 +394,6 @@
             this.openImageToolStripMenuItem.Index = 0;
             this.openImageToolStripMenuItem.Text = "Open Image";
             this.openImageToolStripMenuItem.Click += new System.EventHandler(this.openImageToolStripMenuItem_Click);
-            // 
-            // menuItem7
-            // 
-            this.menuItem7.Index = 2;
-            this.menuItem7.Text = "-";
-            // 
-            // textColorToolStripMenuItem
-            // 
-            this.textColorToolStripMenuItem.Index = 3;
-            this.textColorToolStripMenuItem.Text = "Text Color";
-            this.textColorToolStripMenuItem.Click += new System.EventHandler(this.textColorToolStripMenuItem_Click);
-            // 
-            // backgroundColorToolStripMenuItem
-            // 
-            this.backgroundColorToolStripMenuItem.Index = 4;
-            this.backgroundColorToolStripMenuItem.Text = "Background Color";
-            this.backgroundColorToolStripMenuItem.Click += new System.EventHandler(this.backgroundColorToolStripMenuItem_Click);
             // 
             // text
             // 

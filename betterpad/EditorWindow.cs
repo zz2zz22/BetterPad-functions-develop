@@ -272,7 +272,7 @@ namespace betterpad
 
         private void SetTitle(string document)
         {
-            Text = $"{document} - betterpad by NeoSmart Technologies";
+            Text = $"{document} - betterpad functions developed by Le Anh Vu (17521269), Huynh Quang Minh (17520749)";
         }
 
         private void text_TextChanged(Object sender, EventArgs e)
