@@ -838,8 +838,6 @@ namespace betterpad
             text.Insert(snippet);
         }
 
-<<<<<<< HEAD
-
 
         public void SaveAsRTF()
         {
@@ -871,9 +869,6 @@ namespace betterpad
         }
 
 
-
-=======
->>>>>>> 0e63dd11355f239de7f1f5f22068d18ecb069f7a
         //Format menu handlers
         private void WordWrap(bool wrap)
         {
@@ -914,6 +909,10 @@ namespace betterpad
             {
                 text.SelectionBackColor = bColor.Color;
             }
+        }
+        private void FontToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         // Used to store the font as returned by the font selector, as we don't apply it directly
@@ -1343,42 +1342,39 @@ namespace betterpad
             text.Paste();
         }
 
-        private void FontToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveRichTextFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SaveAsRTF();
+        }
 
+        private void openRichTextFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadRTF();
         }
 
 
 
-
+        //Code Editor Menu Handlers
         public static IList<string> aaa = new List<string>();
-
-
-        private void MenuItem8_Click(object sender, EventArgs e)
-
+        private void setListOfKeywordToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Keyword a = new Keyword();
 
-        Keyword a = new Keyword();
-
-        a.ShowDialog();
-
+            a.ShowDialog();
         }
-
         public static Color kwcolor = Color.Blue;
-
-        private void MenuItem9_Click(object sender, EventArgs e)
+        private void keywordColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog colorD = new ColorDialog();
             colorD.ShowDialog();
             kwcolor = colorD.Color;
-            
         }
 
-        private void MenuItem10_Click(object sender, EventArgs e)
+        private void normalTextColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog colorD = new ColorDialog();
-            colorD.ShowDialog();           
-            text.ForeColor = colorD.Color;          
+            colorD.ShowDialog();
+            text.ForeColor = colorD.Color;
         }
     }
 }
