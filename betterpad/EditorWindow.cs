@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -86,7 +87,8 @@ namespace betterpad
 
         private void InitializeHandlers()
         {
-            Load += (s, e) => {
+            Load += (s, e) =>
+            {
                 text.Padding = new Padding(10, 10, 12, 10);
             };
 
@@ -272,7 +274,7 @@ namespace betterpad
 
         private void SetTitle(string document)
         {
-            Text = $"{document} - betterpad by NeoSmart Technologies";
+            Text = $"{document} - betterpad functions developed by Le Anh Vu (17521269), Huynh Quang Minh (17520749)";
         }
 
         private void text_TextChanged(Object sender, EventArgs e)
@@ -447,6 +449,7 @@ namespace betterpad
             GC.Collect();
         }
 
+
         private Task<bool> SaveAsAsync()
         {
             return SaveAsAsync(null);
@@ -576,6 +579,7 @@ namespace betterpad
 
         private void Paste()
         {
+            text.Paste(DataFormats.GetFormat(DataFormats.Bitmap));
             text.Paste(DataFormats.GetFormat(DataFormats.UnicodeText));
         }
 
@@ -803,6 +807,32 @@ namespace betterpad
             var snippet = (DateTime.Now).ToString("h:mm tt M/d/yyyy");
             text.Insert(snippet);
         }
+        public void SaveAsRTF()
+        {
+            SaveFileDialog saveFile1 = new SaveFileDialog();
+
+            saveFile1.DefaultExt = "*.rtf";
+            saveFile1.Filter = "RTF Files|*.rtf";
+
+            if (saveFile1.ShowDialog() == System.Windows.Forms.DialogResult.OK &&
+               saveFile1.FileName.Length > 0)
+            {
+                text.SaveFile(saveFile1.FileName, RichTextBoxStreamType.RichText);
+            }
+        }
+        public void LoadRTF()
+        {
+            OpenFileDialog openFile1 = new OpenFileDialog();
+
+            openFile1.DefaultExt = "*.rtf";
+            openFile1.Filter = "RTF Files|*.rtf";
+
+            if (openFile1.ShowDialog() == System.Windows.Forms.DialogResult.OK &&
+               openFile1.FileName.Length > 0)
+            {
+                text.LoadFile(openFile1.FileName);
+            }
+        }
 
         //Format menu handlers
         private void WordWrap(bool wrap)
@@ -821,6 +851,29 @@ namespace betterpad
         {
             statusBarToolStripMenuItem.Checked = !statusBarToolStripMenuItem.Checked;
             statusStrip1.Visible = statusBarToolStripMenuItem.Checked;
+        }
+        private void textColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorD = new ColorDialog();
+
+            colorD.Color = text.SelectionColor;
+
+            if (colorD.ShowDialog() == System.Windows.Forms.DialogResult.OK && colorD.Color != text.SelectionColor)
+            {
+                text.SelectionColor = colorD.Color;
+            }
+        }
+
+        private void backgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog bColor = new ColorDialog();
+
+            bColor.Color = text.SelectionBackColor;
+
+            if (bColor.ShowDialog() == System.Windows.Forms.DialogResult.OK && bColor.Color != text.SelectionBackColor)
+            {
+                text.SelectionBackColor = bColor.Color;
+            }
         }
 
         // Used to store the font as returned by the font selector, as we don't apply it directly
@@ -961,6 +1014,37 @@ namespace betterpad
                 return $"{version.Major}.{version.Minor}.{version.Build}";
             }
         }
+
+        //Others Menu Handlers
+        private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openimg = new OpenFileDialog();
+
+            openimg.Filter = "Image files(*.jpeg; *.jpg; *.gif; *.png; *.peg) | *.jpeg;  *.jpg; *.gif; *.png; *.peg";
+            if (openimg.ShowDialog() == DialogResult.OK)
+            {
+                createImage(openimg.FileName);
+            }
+        }
+        private void createImage(string name)
+        {
+            Clipboard.SetImage(Image.FromFile(name));
+            text.Paste();
+        }
+
+
+        private void saveAsRtfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveAsRTF();
+        }
+
+        private void loadRtfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadRTF();
+        }
+
+
+
 
         private static string _buildHash;
         public static async Task<string> CalculateBuildHashAsync()
@@ -1137,7 +1221,6 @@ namespace betterpad
                     _statusTimer?.Dispose();
 
                     _statusTimer = new System.Windows.Forms.Timer();
-
                     _statusTimer.Interval = (int)timeout.TotalMilliseconds;
                     _statusTimer.Tick += ResetStatus;
                     _statusTimer.Start();
@@ -1231,46 +1314,6 @@ namespace betterpad
                 WordWrap = text.WordWrap
             };
             preferences.Save();
-        }
-
-        private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openimg = new OpenFileDialog();
-
-            openimg.Filter = "Image files(*.jpeg; *.jpg; *.gif; *.png; *.peg) | *.jpeg;  *.jpg; *.gif; *.png; *.peg";
-            if (openimg.ShowDialog() == DialogResult.OK)
-            {
-                createImage(openimg.FileName);
-            }
-        }
-        private void createImage(string name)
-        {
-            Clipboard.SetImage(Image.FromFile(name));
-            text.Paste();
-        }
-
-        private void textColorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ColorDialog colorD = new ColorDialog();
-
-            colorD.Color = text.SelectionColor;
-
-            if ( colorD.ShowDialog() == System.Windows.Forms.DialogResult.OK && colorD.Color != text.SelectionColor)
-            {
-                text.SelectionColor = colorD.Color;
-            }
-        }
-
-        private void backgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ColorDialog bColor = new ColorDialog();
-
-            bColor.Color = text.SelectionBackColor;
-
-            if ( bColor.ShowDialog() == System.Windows.Forms.DialogResult.OK && bColor.Color != text.SelectionBackColor)
-            {
-                text.SelectionBackColor = bColor.Color;
-            }
         }
     }
 }
