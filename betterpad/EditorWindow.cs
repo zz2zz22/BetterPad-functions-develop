@@ -840,6 +840,7 @@ namespace betterpad
         }
 
 
+
         //Format menu handlers
         private void WordWrap(bool wrap)
         {
