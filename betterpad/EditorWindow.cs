@@ -15,6 +15,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace betterpad
 {
     public partial class EditorWindow : Form
@@ -85,42 +86,7 @@ namespace betterpad
             _finder = new FindDialog(text);
 
 
-    }
-
-        private void text_TextChanged(Object sender, EventArgs e)
-        {
-            redoToolStripMenuItem.Enabled = text.CanRedo;
-            undoToolStripMenuItem.Enabled = text.CanUndo;
-
-
-
-            for (int i = 0; i < aaa.Count; i++)
-            {
-                this.CheckKeyword(aaa[i], kwcolor, 0);
-            }
-
-            
         }
-
-
-
-        private void CheckKeyword(string word, Color color, int startIndex)
-        {
-            if (this.text.Text.Contains(word))
-            {
-                int index = -1;
-                int selectStart = this.text.SelectionStart;
-
-                while ((index = this.text.Text.IndexOf(word, (index + 1))) != -1)
-                {
-                    this.text.Select((index + startIndex), word.Length);
-                    this.text.SelectionColor = color;
-                    this.text.Select(selectStart, 0);
-                    this.text.SelectionColor = Color.Black;
-                }
-            }
-        }
-
 
         private void InitializeHandlers()
         {
@@ -865,6 +831,34 @@ namespace betterpad
             {
                 text.LoadFile(openFile1.FileName);
                 SetTitle(openFile1.FileName);
+            }
+        }
+
+        private void text_TextChanged(Object sender, EventArgs e)
+        {
+            redoToolStripMenuItem.Enabled = text.CanRedo;
+            undoToolStripMenuItem.Enabled = text.CanUndo;
+
+            for (int i = 0; i < aaa.Count; i++)
+            {
+                this.CheckKeyword(aaa[i], kwcolor, 0);
+            }
+        }
+
+        private void CheckKeyword(string word, Color color, int startIndex)
+        {
+            if (this.text.Text.Contains(word))
+            {
+                int index = -1;
+                int selectStart = this.text.SelectionStart;
+
+                while ((index = this.text.Text.IndexOf(word, (index + 1))) != -1)
+                {
+                    this.text.Select((index + startIndex), word.Length);
+                    this.text.SelectionColor = color;
+                    this.text.Select(selectStart, 0);
+                    this.text.SelectionColor = Color.Black;
+                }
             }
         }
 

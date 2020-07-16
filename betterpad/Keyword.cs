@@ -21,12 +21,7 @@ namespace betterpad
         private void InitializeLayout()
         {
             TextBox2_TextChanged(null, null);
-
         }
-
-
-
-
 
 
         private void Button1_Click(object sender, EventArgs e)
@@ -47,10 +42,7 @@ namespace betterpad
         private void TextBox2_TextChanged(object sender, EventArgs e)
         {
             string abc = String.Join(", ", EditorWindow.aaa.ToArray());
-            textBox2.Text = abc;
-            
-        }
-
-       
+            textBox2.Text = abc;          
+        }      
     }
 }

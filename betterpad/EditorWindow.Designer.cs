@@ -73,7 +73,9 @@
             this.setListOfKeywordToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.keywordColorToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.normalTextColorToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.checkPunctuationToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.text = new betterpad.BetterRichTextBox();
+            this.menuItem8 = new System.Windows.Forms.MenuItem();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -439,7 +441,9 @@
             this.codeEditorToolStripMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.setListOfKeywordToolStripMenuItem,
             this.keywordColorToolStripMenuItem,
-            this.normalTextColorToolStripMenuItem});
+            this.normalTextColorToolStripMenuItem,
+            this.menuItem8,
+            this.checkPunctuationToolStripMenuItem});
             this.codeEditorToolStripMenuItem.Text = "Code Editor";
             // 
             // setListOfKeywordToolStripMenuItem
@@ -460,6 +464,11 @@
             this.normalTextColorToolStripMenuItem.Text = "Normal Text Color";
             this.normalTextColorToolStripMenuItem.Click += new System.EventHandler(this.normalTextColorToolStripMenuItem_Click);
             // 
+            // checkPunctuationToolStripMenuItem
+            // 
+            this.checkPunctuationToolStripMenuItem.Index = 4;
+            this.checkPunctuationToolStripMenuItem.Text = "Check Punctuation";
+            // 
             // text
             // 
             this.text.AcceptsTab = true;
@@ -476,6 +485,11 @@
             this.text.TextMode = betterpad.BetterRichTextBox.TEXTMODE.TM_PLAINTEXT;
             this.text.SelectionChanged += new System.EventHandler(this.text_SelectionChanged);
             this.text.TextChanged += new System.EventHandler(this.text_TextChanged);
+            // 
+            // menuItem8
+            // 
+            this.menuItem8.Index = 3;
+            this.menuItem8.Text = "-";
             // 
             // EditorWindow
             // 
@@ -562,6 +576,8 @@
         private System.Windows.Forms.MenuItem setListOfKeywordToolStripMenuItem;
         private System.Windows.Forms.MenuItem keywordColorToolStripMenuItem;
         private System.Windows.Forms.MenuItem normalTextColorToolStripMenuItem;
+        private System.Windows.Forms.MenuItem checkPunctuationToolStripMenuItem;
+        private System.Windows.Forms.MenuItem menuItem8;
     }
 }
 
