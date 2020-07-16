@@ -1221,7 +1221,6 @@ namespace betterpad
                     _statusTimer?.Dispose();
 
                     _statusTimer = new System.Windows.Forms.Timer();
-
                     _statusTimer.Interval = (int)timeout.TotalMilliseconds;
                     _statusTimer.Tick += ResetStatus;
                     _statusTimer.Start();
