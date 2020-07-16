@@ -83,7 +83,44 @@ namespace betterpad
             SetTitle($"Untitled {_documentNumber}");
             _lastHash = DocumentHash;
             _finder = new FindDialog(text);
+
+
+    }
+
+        private void text_TextChanged(Object sender, EventArgs e)
+        {
+            redoToolStripMenuItem.Enabled = text.CanRedo;
+            undoToolStripMenuItem.Enabled = text.CanUndo;
+
+
+
+            for (int i = 0; i < aaa.Count; i++)
+            {
+                this.CheckKeyword(aaa[i], kwcolor, 0);
+            }
+
+            
         }
+
+
+
+        private void CheckKeyword(string word, Color color, int startIndex)
+        {
+            if (this.text.Text.Contains(word))
+            {
+                int index = -1;
+                int selectStart = this.text.SelectionStart;
+
+                while ((index = this.text.Text.IndexOf(word, (index + 1))) != -1)
+                {
+                    this.text.Select((index + startIndex), word.Length);
+                    this.text.SelectionColor = color;
+                    this.text.Select(selectStart, 0);
+                    this.text.SelectionColor = Color.Black;
+                }
+            }
+        }
+
 
         private void InitializeHandlers()
         {
@@ -277,12 +314,6 @@ namespace betterpad
             Text = $"{document} - betterpad functions developed by Le Anh Vu (17521269), Huynh Quang Minh (17520749)";
         }
 
-        private void text_TextChanged(Object sender, EventArgs e)
-        {
-            redoToolStripMenuItem.Enabled = text.CanRedo;
-            undoToolStripMenuItem.Enabled = text.CanUndo;
-        }
-
         private void HookLocationDetection()
         {
             Action updateLocation = () =>
@@ -448,7 +479,6 @@ namespace betterpad
 
             GC.Collect();
         }
-
 
         private Task<bool> SaveAsAsync()
         {
@@ -808,6 +838,7 @@ namespace betterpad
             text.Insert(snippet);
         }
 
+<<<<<<< HEAD
 
 
         public void SaveAsRTF()
@@ -841,6 +872,8 @@ namespace betterpad
 
 
 
+=======
+>>>>>>> 0e63dd11355f239de7f1f5f22068d18ecb069f7a
         //Format menu handlers
         private void WordWrap(bool wrap)
         {
@@ -1022,37 +1055,6 @@ namespace betterpad
             }
         }
 
-        //Others Menu Handlers
-        private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openimg = new OpenFileDialog();
-
-            openimg.Filter = "Image files(*.jpeg; *.jpg; *.gif; *.png; *.peg) | *.jpeg;  *.jpg; *.gif; *.png; *.peg";
-            if (openimg.ShowDialog() == DialogResult.OK)
-            {
-                createImage(openimg.FileName);
-            }
-        }
-        private void createImage(string name)
-        {
-            Clipboard.SetImage(Image.FromFile(name));
-            text.Paste();
-        }
-
-
-        private void saveAsRtfToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveAsRTF();
-        }
-
-        private void loadRtfToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LoadRTF();
-        }
-
-
-
-
         private static string _buildHash;
         public static async Task<string> CalculateBuildHashAsync()
         {
@@ -1228,6 +1230,7 @@ namespace betterpad
                     _statusTimer?.Dispose();
 
                     _statusTimer = new System.Windows.Forms.Timer();
+
                     _statusTimer.Interval = (int)timeout.TotalMilliseconds;
                     _statusTimer.Tick += ResetStatus;
                     _statusTimer.Start();
@@ -1321,6 +1324,61 @@ namespace betterpad
                 WordWrap = text.WordWrap
             };
             preferences.Save();
+        }
+
+        //Others Menu Handlers
+        private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openimg = new OpenFileDialog();
+
+            openimg.Filter = "Image files(*.jpeg; *.jpg; *.gif; *.png; *.peg) | *.jpeg;  *.jpg; *.gif; *.png; *.peg";
+            if (openimg.ShowDialog() == DialogResult.OK)
+            {
+                createImage(openimg.FileName);
+            }
+        }
+        private void createImage(string name)
+        {
+            Clipboard.SetImage(Image.FromFile(name));
+            text.Paste();
+        }
+
+        private void FontToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+        public static IList<string> aaa = new List<string>();
+
+
+        private void MenuItem8_Click(object sender, EventArgs e)
+
+        {
+
+        Keyword a = new Keyword();
+
+        a.ShowDialog();
+
+        }
+
+        public static Color kwcolor = Color.Blue;
+
+        private void MenuItem9_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorD = new ColorDialog();
+            colorD.ShowDialog();
+            kwcolor = colorD.Color;
+            
+        }
+
+        private void MenuItem10_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorD = new ColorDialog();
+            colorD.ShowDialog();           
+            text.ForeColor = colorD.Color;          
         }
     }
 }

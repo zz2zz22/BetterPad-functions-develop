@@ -53,6 +53,7 @@
             this.menuItem7 = new System.Windows.Forms.MenuItem();
             this.textColorToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.backgroundColorToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.menuItem8 = new System.Windows.Forms.MenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.statusBarToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.MenuItem();
@@ -65,9 +66,9 @@
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.othersToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.openImageToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.menuItem9 = new System.Windows.Forms.MenuItem();
             this.text = new betterpad.BetterRichTextBox();
-            this.saveAsRtfToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.loadRtfToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.menuItem10 = new System.Windows.Forms.MenuItem();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,30 +79,30 @@
             this.lblStatus1,
             this.lblStatus2,
             this.locationLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 415);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 189);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 11, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(732, 26);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 8, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(549, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // lblStatus1
             // 
             this.lblStatus1.Name = "lblStatus1";
-            this.lblStatus1.Size = new System.Drawing.Size(74, 20);
+            this.lblStatus1.Size = new System.Drawing.Size(58, 17);
             this.lblStatus1.Text = "lblStatus1";
             // 
             // lblStatus2
             // 
             this.lblStatus2.Name = "lblStatus2";
-            this.lblStatus2.Size = new System.Drawing.Size(645, 20);
+            this.lblStatus2.Size = new System.Drawing.Size(481, 17);
             this.lblStatus2.Spring = true;
             this.lblStatus2.Text = "lblStatus2";
             // 
             // locationLabel
             // 
             this.locationLabel.Name = "locationLabel";
-            this.locationLabel.Size = new System.Drawing.Size(0, 20);
+            this.locationLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // fileToolStripMenuItem
             // 
@@ -288,7 +289,10 @@
             this.fontToolStripMenuItem,
             this.menuItem7,
             this.textColorToolStripMenuItem,
-            this.backgroundColorToolStripMenuItem});
+            this.backgroundColorToolStripMenuItem,
+            this.menuItem8,
+            this.menuItem9,
+            this.menuItem10});
             this.formatToolStripMenuItem.Text = "F&ormat";
             // 
             // wordWrapToolStripMenuItem
@@ -300,6 +304,7 @@
             // 
             this.fontToolStripMenuItem.Index = 1;
             this.fontToolStripMenuItem.Text = "&Font";
+            this.fontToolStripMenuItem.Click += new System.EventHandler(this.FontToolStripMenuItem_Click);
             // 
             // menuItem7
             // 
@@ -317,6 +322,12 @@
             this.backgroundColorToolStripMenuItem.Index = 4;
             this.backgroundColorToolStripMenuItem.Text = "Background Color";
             this.backgroundColorToolStripMenuItem.Click += new System.EventHandler(this.backgroundColorToolStripMenuItem_Click);
+            // 
+            // menuItem8
+            // 
+            this.menuItem8.Index = 5;
+            this.menuItem8.Text = "Keyword and the rest";
+            this.menuItem8.Click += new System.EventHandler(this.MenuItem8_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -369,9 +380,10 @@
             // testbox
             // 
             this.testbox.AutoSize = true;
-            this.testbox.Location = new System.Drawing.Point(10, 91);
+            this.testbox.Location = new System.Drawing.Point(8, 74);
+            this.testbox.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.testbox.Name = "testbox";
-            this.testbox.Size = new System.Drawing.Size(0, 17);
+            this.testbox.Size = new System.Drawing.Size(0, 13);
             this.testbox.TabIndex = 2;
             // 
             // mainMenu1
@@ -388,9 +400,7 @@
             // 
             this.othersToolStripMenuItem.Index = 5;
             this.othersToolStripMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.openImageToolStripMenuItem,
-            this.saveAsRtfToolStripMenuItem,
-            this.loadRtfToolStripMenuItem});
+            this.openImageToolStripMenuItem});
             this.othersToolStripMenuItem.Text = "Others";
             // 
             // openImageToolStripMenuItem
@@ -399,44 +409,45 @@
             this.openImageToolStripMenuItem.Text = "Open Image";
             this.openImageToolStripMenuItem.Click += new System.EventHandler(this.openImageToolStripMenuItem_Click);
             // 
+            // menuItem9
+            // 
+            this.menuItem9.Index = 6;
+            this.menuItem9.Text = "Keyword Color";
+            this.menuItem9.Click += new System.EventHandler(this.MenuItem9_Click);
+            // 
             // text
             // 
             this.text.AcceptsTab = true;
             this.text.Dock = System.Windows.Forms.DockStyle.Fill;
             this.text.Font = new System.Drawing.Font("Consolas", 11F);
+            this.text.ForeColor = System.Drawing.Color.Black;
             this.text.HideSelection = false;
             this.text.Location = new System.Drawing.Point(0, 0);
-            this.text.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.text.Margin = new System.Windows.Forms.Padding(2);
             this.text.Name = "text";
-            this.text.Size = new System.Drawing.Size(732, 415);
+            this.text.Size = new System.Drawing.Size(549, 189);
             this.text.TabIndex = 0;
             this.text.Text = "";
             this.text.TextMode = betterpad.BetterRichTextBox.TEXTMODE.TM_PLAINTEXT;
             this.text.SelectionChanged += new System.EventHandler(this.text_SelectionChanged);
             this.text.TextChanged += new System.EventHandler(this.text_TextChanged);
             // 
-            // saveAsRtfToolStripMenuItem
+            // menuItem10
             // 
-            this.saveAsRtfToolStripMenuItem.Index = 1;
-            this.saveAsRtfToolStripMenuItem.Text = "Save as RTF";
-            this.saveAsRtfToolStripMenuItem.Click += new System.EventHandler(this.saveAsRtfToolStripMenuItem_Click);
-            // 
-            // loadRtfToolStripMenuItem
-            // 
-            this.loadRtfToolStripMenuItem.Index = 2;
-            this.loadRtfToolStripMenuItem.Text = "Load RTF";
-            this.loadRtfToolStripMenuItem.Click += new System.EventHandler(this.loadRtfToolStripMenuItem_Click);
+            this.menuItem10.Index = 7;
+            this.menuItem10.Text = "Default Color";
+            this.menuItem10.Click += new System.EventHandler(this.MenuItem10_Click);
             // 
             // EditorWindow
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 441);
+            this.ClientSize = new System.Drawing.Size(549, 211);
             this.Controls.Add(this.text);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.testbox);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Menu = this.mainMenu1;
             this.Name = "EditorWindow";
             this.Text = "betterpad by NeoSmart Technologies";
@@ -504,8 +515,9 @@
         private System.Windows.Forms.MenuItem menuItem7;
         private System.Windows.Forms.MenuItem textColorToolStripMenuItem;
         private System.Windows.Forms.MenuItem backgroundColorToolStripMenuItem;
-        private System.Windows.Forms.MenuItem saveAsRtfToolStripMenuItem;
-        private System.Windows.Forms.MenuItem loadRtfToolStripMenuItem;
+        private System.Windows.Forms.MenuItem menuItem8;
+        private System.Windows.Forms.MenuItem menuItem9;
+        private System.Windows.Forms.MenuItem menuItem10;
     }
 }
 
