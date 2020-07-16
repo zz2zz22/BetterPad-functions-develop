@@ -807,6 +807,9 @@ namespace betterpad
             var snippet = (DateTime.Now).ToString("h:mm tt M/d/yyyy");
             text.Insert(snippet);
         }
+
+
+
         public void SaveAsRTF()
         {
             SaveFileDialog saveFile1 = new SaveFileDialog();
@@ -818,6 +821,7 @@ namespace betterpad
                saveFile1.FileName.Length > 0)
             {
                 text.SaveFile(saveFile1.FileName, RichTextBoxStreamType.RichText);
+                SetTitle(saveFile1.FileName);
             }
         }
         public void LoadRTF()
@@ -831,8 +835,10 @@ namespace betterpad
                openFile1.FileName.Length > 0)
             {
                 text.LoadFile(openFile1.FileName);
+                SetTitle(openFile1.FileName);
             }
         }
+
 
         //Format menu handlers
         private void WordWrap(bool wrap)
