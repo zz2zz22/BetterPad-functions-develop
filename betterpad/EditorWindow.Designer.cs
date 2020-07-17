@@ -472,7 +472,7 @@
             // autoCorrectBracketsToolStripMenuItem
             // 
             this.autoCorrectBracketsToolStripMenuItem.Index = 4;
-            this.autoCorrectBracketsToolStripMenuItem.Text = "Auto correct brackets";
+            this.autoCorrectBracketsToolStripMenuItem.Text = "Auto fill brackets";
             this.autoCorrectBracketsToolStripMenuItem.Click += new System.EventHandler(this.autoCorrectBracketsToolStripMenuItem_Click);
             // 
             // text
