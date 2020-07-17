@@ -14,7 +14,6 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using exporttoword = Microsoft.Office.Interop.Word;
 
 
 namespace betterpad
@@ -1370,6 +1369,79 @@ namespace betterpad
             ColorDialog colorD = new ColorDialog();
             colorD.ShowDialog();
             text.ForeColor = colorD.Color;
+        }
+
+        public static Boolean isCurslyBracesKeyPressed = false;
+        private void autoCorrectBracketsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (autoCorrectBracketsToolStripMenuItem.Checked == true)
+            {
+                autoCorrectBracketsToolStripMenuItem.Checked = false;
+            }
+            else autoCorrectBracketsToolStripMenuItem.Checked = true;
+        }
+        private void text_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            String s = e.KeyChar.ToString();
+            int sel = text.SelectionStart;
+            if (autoCorrectBracketsToolStripMenuItem.Checked == true)
+            {
+                switch (s)
+                {
+                    case "(":
+                        text.Text = text.Text.Insert(sel, "()");
+                        e.Handled = true;
+                        text.SelectionStart = sel + 1;
+                        break;
+
+                    case "{":
+                        String t = "{}";
+                        text.Text = text.Text.Insert(sel, t);
+                        e.Handled = true;
+                        text.SelectionStart = sel + t.Length - 1;
+                        isCurslyBracesKeyPressed = true;
+                        break;
+
+                    case "[":
+                        text.Text = text.Text.Insert(sel, "[]");
+                        e.Handled = true;
+                        text.SelectionStart = sel + 1;
+                        break;
+
+                    case "<":
+                        text.Text = text.Text.Insert(sel, "<>");
+                        e.Handled = true;
+                        text.SelectionStart = sel + 1;
+                        break;
+
+                    case "\"":
+                        text.Text = text.Text.Insert(sel, "\"\"");
+                        e.Handled = true;
+                        text.SelectionStart = sel + 1;
+                        break;
+
+                    case "'":
+                        text.Text = text.Text.Insert(sel, "''");
+                        e.Handled = true;
+                        text.SelectionStart = sel + 1;
+                        break;
+                }
+            }
+        }
+        
+        private void text_KeyDown(object sender, KeyEventArgs e)
+        {
+            int sel = text.SelectionStart;
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (isCurslyBracesKeyPressed == true)
+                {
+                    text.Text = text.Text.Insert(sel, "\n          \n");
+                    e.Handled = true;
+                    text.SelectionStart = sel + "          ".Length;
+                    isCurslyBracesKeyPressed = false;
+                }
+            }
         }
     }
 }

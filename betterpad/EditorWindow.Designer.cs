@@ -74,7 +74,7 @@
             this.keywordColorToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.normalTextColorToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.menuItem8 = new System.Windows.Forms.MenuItem();
-            this.checkPunctuationToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.autoCorrectBracketsToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.text = new betterpad.BetterRichTextBox();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -86,7 +86,7 @@
             this.lblStatus1,
             this.lblStatus2,
             this.locationLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 208);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 310);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(3, 0, 11, 0);
             this.statusStrip1.Size = new System.Drawing.Size(732, 26);
@@ -443,7 +443,7 @@
             this.keywordColorToolStripMenuItem,
             this.normalTextColorToolStripMenuItem,
             this.menuItem8,
-            this.checkPunctuationToolStripMenuItem});
+            this.autoCorrectBracketsToolStripMenuItem});
             this.codeEditorToolStripMenuItem.Text = "Code Editor";
             // 
             // setListOfKeywordToolStripMenuItem
@@ -469,10 +469,11 @@
             this.menuItem8.Index = 3;
             this.menuItem8.Text = "-";
             // 
-            // checkPunctuationToolStripMenuItem
+            // autoCorrectBracketsToolStripMenuItem
             // 
-            this.checkPunctuationToolStripMenuItem.Index = 4;
-            this.checkPunctuationToolStripMenuItem.Text = "Check Punctuation";
+            this.autoCorrectBracketsToolStripMenuItem.Index = 4;
+            this.autoCorrectBracketsToolStripMenuItem.Text = "Auto correct brackets";
+            this.autoCorrectBracketsToolStripMenuItem.Click += new System.EventHandler(this.autoCorrectBracketsToolStripMenuItem_Click);
             // 
             // text
             // 
@@ -484,19 +485,21 @@
             this.text.Location = new System.Drawing.Point(0, 0);
             this.text.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.text.Name = "text";
-            this.text.Size = new System.Drawing.Size(732, 208);
+            this.text.Size = new System.Drawing.Size(732, 310);
             this.text.TabIndex = 0;
             this.text.Text = "";
             this.text.TextMode = betterpad.BetterRichTextBox.TEXTMODE.TM_PLAINTEXT;
             this.text.SelectionChanged += new System.EventHandler(this.text_SelectionChanged);
             this.text.TextChanged += new System.EventHandler(this.text_TextChanged);
+            this.text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.text_KeyDown);
+            this.text.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_KeyPress);
             // 
             // EditorWindow
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 234);
+            this.ClientSize = new System.Drawing.Size(732, 336);
             this.Controls.Add(this.text);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.testbox);
@@ -576,7 +579,7 @@
         private System.Windows.Forms.MenuItem setListOfKeywordToolStripMenuItem;
         private System.Windows.Forms.MenuItem keywordColorToolStripMenuItem;
         private System.Windows.Forms.MenuItem normalTextColorToolStripMenuItem;
-        private System.Windows.Forms.MenuItem checkPunctuationToolStripMenuItem;
+        private System.Windows.Forms.MenuItem autoCorrectBracketsToolStripMenuItem;
         private System.Windows.Forms.MenuItem menuItem8;
     }
 }
