@@ -1380,6 +1380,7 @@ namespace betterpad
             }
             else autoCorrectBracketsToolStripMenuItem.Checked = true;
         }
+        
         private void text_KeyPress(object sender, KeyPressEventArgs e)
         {
             String s = e.KeyChar.ToString();
